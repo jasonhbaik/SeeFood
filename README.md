@@ -1,10 +1,10 @@
-# SeeFood — AI Image Classifier (Silicon Valley Remake)
+# SeeFood - AI Image Classifier
 
 A computer vision project inspired by the **SeeFood** app from *Silicon Valley*, which classifies images as **“Hotdog” or “Not Hotdog.”**  
 The system uses a **Convolutional Neural Network (CNN)** trained on a Kaggle dataset and integrates **OpenCV** for image preprocessing and inference.
 
-<img src="media/demo1.gif" width = 100%>
-<img src="media/demo2.gif" width = 100%>
+<img src="media/hotdog.png" width = 100%>
+<img src="media/not.png" width = 100%>
 
 ---
 
