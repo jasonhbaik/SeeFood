@@ -12,7 +12,7 @@ The project was inspired by the "revolutionary" **SeeFood** app developed by Jia
 
 > "What if I told you there is an app on the market that tell you if you have a hotdog or not a hotdog?"
 
-  <a href="https://www.youtube.com/watch?v=tWwCK95X6go">
+<a href="https://www.youtube.com/watch?v=tWwCK95X6go">
 
 ---
 
@@ -41,14 +41,14 @@ The architecture focuses on spatial feature extraction and dimensionality reduct
 
 The final implementation successfully recreates the core functionality of the fictional "SeeFood" app, achieving a **testing accuracy of 89%**. The system demonstrates robust classification capabilities, correctly identifying hotdogs in real-time while maintaining a low false-positive rate for most non-food items.
 
-<img src ="hotdog_test.png" width = "80%">
-<img src = "not_hotdog_test.png" width = "80%">
+<img src ="media/hotdog_test.png" width = "80%">
+<img src = "media/not_hotdog_test.png" width = "80%">
 
 
 ### Bias & Edge Cases
 During testing, an interesting edge case was identified: the model occasionally classifies human faces as "hotdogs." This is attributed to a **dataset bias**, as a significant portion of the training data featured people holding or eating hotdogs near their faces. Consequently, the model learned to associate facial features with the hotdog class.
 
-
+<img src = "media/not_working.png" width = "80%">
 
 ### Future Improvements
 To mitigate this bias and improve generalization, future iterations will include:
