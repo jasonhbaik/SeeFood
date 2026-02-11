@@ -1,8 +1,8 @@
 # SeeFood - AI Image Classifier 🌭
 
-A computer vision project inspired by the **SeeFood** app from the HBO series *Silicon Valley*. The system implements a Convolutional Neural Network (CNN) leveraging transfer learning to perform binary image classification, distinguishing between "Hotdog" and "Not Hotdog" with high precision.
-
-<img src="media/hotdog.png" width="60%">
+A computer vision project inspired by the **SeeFood** app from the HBO series *Silicon Valley*. The system implements a Convolutional Neural Network (CNN) leveraging transfer learning to perform binary image classification, distinguishing between "Hotdog" and "Not Hotdog."
+<img src="media/hotdog.png" width="80%">
+<img src = "media/not.png" width = "80%">
 
 ---
 
@@ -13,8 +13,6 @@ The project was inspired by the "revolutionary" **SeeFood** app developed by Jia
 > "What if I told you there is an app on the market that tell you if you have a hotdog or not a hotdog?"
 
   <a href="https://www.youtube.com/watch?v=tWwCK95X6go">
-    <img src="https://img.youtube.com/vi/tWwCK95X6go/0.jpg" alt="Silicon Valley SeeFood Clip" width="60%">
-  </a>
 
 ---
 
@@ -25,39 +23,36 @@ The project is designed as an end-to-end machine learning pipeline, separating d
 The architecture focuses on spatial feature extraction and dimensionality reduction, ensuring the classifier can distinguish a hotdog from visually similar items like sausages or sandwiches based on texture, geometry, and context.
 
 
-
-[Image of Convolutional Neural Network architecture diagram]
-
-
 ---
 
 ## 🧭 Approach
 
-1. **Dataset Engineering** Labeled image data was sourced from Kaggle and preprocessed using OpenCV. This included resizing images to a uniform tensor shape and normalizing pixel values for faster gradient descent convergence.
+1. **Dataset Engineering** Labeled image data was sourced from Kaggle. During training, images were resized to a uniform tensor shape and normalized to speed up gradient descent convergence.
 
-2. **Transfer Learning Strategy** Instead of training a model from scratch, the system utilizes a pre-trained backbone. By freezing the early convolutional layers—which are already optimized for detecting low-level features like edges and textures—the model focuses training on custom-added top layers. This drastically reduced training time while maintaining high feature-extraction performance.
+2. **Transfer Learning Strategy** The system utilizes a **ResNet-18** backbone. By freezing early convolutional layers—already optimized for detecting low-level features—the model focuses training on custom-added top layers, drastically reducing training time while maintaining high performance.
 
-   
+3. **Hybrid Inference Pipeline** A dedicated script bridges the gap between hardware and AI. **OpenCV** handles the real-time webcam stream, BGR-to-RGB color space conversion, and UI overlays, while **Torchvision** transforms handle the tensor normalization and cropping required for model input.
 
-3. **CNN Fine-Tuning** The custom "head" of the network consists of Global Average Pooling to reduce parameter count, followed by a dense fully-connected layer with **Sigmoid activation**. This configuration outputs a single probability score, mapping visual features to a binary classification.
-
-4. **Inference Pipeline** A dedicated inference script was developed to bridge the gap between raw image files and the trained model. It handles real-time preprocessing—including color-space conversion and tensor expansion—to ensure input consistency during prediction.
-
-5. **Performance Evaluation** The model was validated using accuracy and loss curves. Data augmentation techniques—such as rotation, zoom, and horizontal flipping—were applied during training to artificially expand the dataset, preventing overfitting and ensuring consistent performance across different environments.
+4. **Performance Evaluation** The model was validated using accuracy and loss curves. Data augmentation techniques—such as rotation and flipping—were applied during training to prevent overfitting and ensure consistent performance across different lighting conditions.
 
 ---
 
 ## 📊 Results
 
-The final implementation successfully recreates the core functionality of the fictional "SeeFood" app, achieving a **testing accuracy of 89%**. The system demonstrates robust classification capabilities, correctly identifying hotdogs across various lighting conditions and angles while maintaining a low false-positive rate for non-hotdog items.
+The final implementation successfully recreates the core functionality of the fictional "SeeFood" app, achieving a **testing accuracy of 89%**. The system demonstrates robust classification capabilities, correctly identifying hotdogs in real-time while maintaining a low false-positive rate for most non-food items.
 
-The project serves as a practical demonstration of applying deep learning and computer vision techniques to solve specific image-recognition challenges in a modular, reproducible environment.
+<img src ="hotdog_test.png" width = "80%">
+<img src = "not_hotdog_test.png" width = "80%">
+
+
+### Bias & Edge Cases
+During testing, an interesting edge case was identified: the model occasionally classifies human faces as "hotdogs." This is attributed to a **dataset bias**, as a significant portion of the training data featured people holding or eating hotdogs near their faces. Consequently, the model learned to associate facial features with the hotdog class.
 
 
 
-
-  <img src="media/hotdog.png" width="45%" />
-  <img src="media/not.png" width="45%" /> 
-
+### Future Improvements
+To mitigate this bias and improve generalization, future iterations will include:
+* **Negative Sampling:** Integrating a broader dataset of human faces (without hotdogs) into the "not_hotdog" class to decouple facial features from the target classification.
+* **Hard Negative Mining:** Specifically training on images that the model currently misclassifies to refine the decision boundary.
 
 ---
