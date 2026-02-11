@@ -1,6 +1,7 @@
 # SeeFood - AI Image Classifier 🌭
 
 A computer vision project inspired by the **SeeFood** app from the HBO series *Silicon Valley*. The system implements a Convolutional Neural Network (CNN) leveraging transfer learning to perform binary image classification, distinguishing between "Hotdog" and "Not Hotdog."
+
 <img src="media/hotdog.png" width="80%">
 <img src = "media/not.png" width = "80%">
 
@@ -10,17 +11,16 @@ A computer vision project inspired by the **SeeFood** app from the HBO series *S
 
 The project was inspired by the "revolutionary" **SeeFood** app developed by Jian-Yang. The goal was to take a fictional, comedic concept—a "Shazam for Food"—and implement it using a modern machine learning stack to explore the practical challenges of binary image classification and end-to-end model deployment.
 
+<a href="https://www.youtube.com/watch?v=tWwCK95X6go">
+
 > "What if I told you there is an app on the market that tell you if you have a hotdog or not a hotdog?"
 
-<a href="https://www.youtube.com/watch?v=tWwCK95X6go">
 
 ---
 
 ## 🧠 Design
 
 The project is designed as an end-to-end machine learning pipeline, separating data preprocessing, model architecture, and real-time inference. By leveraging **Transfer Learning**, the model utilizes pre-trained feature extractors to identify complex visual patterns in food items without requiring massive computational resources or a million-image dataset.
-
-The architecture focuses on spatial feature extraction and dimensionality reduction, ensuring the classifier can distinguish a hotdog from visually similar items like sausages or sandwiches based on texture, geometry, and context.
 
 
 ---
